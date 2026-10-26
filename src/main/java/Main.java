@@ -19,4 +19,4 @@ public class Main {
         System.out.println("Сумма вегетарианских: " + cart.getTotalVegetarianPrice());
     }
 }
-// Ветка task-1 готова к проверке
+// ready

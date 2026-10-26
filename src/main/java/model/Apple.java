@@ -19,3 +19,4 @@ public class Apple extends Food implements Discountable {
         return 0;
     }
 }
+// ready

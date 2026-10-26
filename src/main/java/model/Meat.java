@@ -5,3 +5,4 @@ public class Meat extends Food{
         super(amount, price, false);
     }
 }
+// ready
