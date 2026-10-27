@@ -1,7 +1,6 @@
 package service;
 
 import model.Food;
-import model.Discountable;
 
 public class ShoppingCart {
     private Food[] items;
@@ -13,7 +12,7 @@ public class ShoppingCart {
     public double getTotalPrice() {
         double total = 0;
         for (Food item : items) {
-            total = total + (item.getAmount() * item.getPrice());
+            total += item.getAmount() * item.getPrice();
         }
         return total;
     }
@@ -21,14 +20,8 @@ public class ShoppingCart {
     public double getTotalPriceWithDiscount() {
         double total = 0;
         for (Food item : items) {
-            double itemCost = item.getAmount() * item.getPrice();
-
-            if (item instanceof Discountable) {
-                Discountable discountableItem = (Discountable) item;
-                double discount = discountableItem.getDiscount();
-                itemCost = itemCost - (itemCost * discount / 100.0);
-            }
-            total = total + itemCost;
+            // Цена * Количество * (1 - скидка/100)
+            total += item.getAmount() * item.getPrice() * (1 - item.getDiscount() / 100.0);
         }
         return total;
     }
@@ -37,9 +30,10 @@ public class ShoppingCart {
         double total = 0;
         for (Food item : items) {
             if (item.isVegetarian()) {
-                total = total + (item.getAmount() * item.getPrice());
+                total += item.getAmount() * item.getPrice();
             }
         }
         return total;
     }
 }
+// ready

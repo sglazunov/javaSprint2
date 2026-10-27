@@ -1,5 +1,8 @@
 package model;
 
 public interface Discountable {
-    double getDiscount();
+    default double getDiscount() {
+        return 0;
+    }
 }
+// ready
